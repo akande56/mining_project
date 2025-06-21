@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Toro Royal Mining Limited</title>
+
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"  rel="stylesheet">
+
+    <!-- Custom Animation CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --deep-red: #8B0000;
+            --burnt-orange: #CC5500;
+            --gold: #FFD700;
+            --soft-white: #F8F8F8;
+            --soft-gray: #E5E5E5;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
+            color: var(--soft-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+        .particle:nth-child(odd) {
+            background: var(--burnt-orange);
+            animation-delay: -2s;
+        }
+        .particle:nth-child(3n) {
+            background: var(--deep-red);
+            animation-delay: -4s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.9; }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--soft-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Glass card styling */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23654321" width="1200" height="800"/><path fill="%238B4513" d="M0,400 Q300,200 600,400 T1200,400 V800 H0 V400"/><circle fill="%23DAA520" cx="200" cy="150" r="30" opacity="0.7"/><circle fill="%23B8860B" cx="800" cy="200" r="20" opacity="0.8"/><circle fill="%23FFD700" cx="1000" cy="100" r="15" opacity="0.6"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--gold), var(--burnt-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--soft-white);
+            opacity: 0.9;
+        }
+
+        /* Section styling */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--gold);
+        }
+
+        /* Company Overview */
+        .overview p {
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .mission-card, .vision-card {
+            text-align: center;
+            position: relative;
+        }
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--gold), var(--burnt-orange));
+        }
+        .mission-card::after {
+            content: '🎯';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+        .vision-card::after {
+            content: '🔮';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+        .mission-card h3, .vision-card h3 {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* Mining Sites */
+        .mining-sites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .site-card {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        .site-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .site-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--deep-red), var(--burnt-orange), var(--gold));
+            opacity: 0.8;
+        }
+        .site-card .site-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+        }
+
+
+        /* minng site modal */
+
+        .modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 90%;
+  max-height: 80vh;
+  position: relative;
+  text-align: center;
+  animation: zoomIn 0.4s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  max-height: 60vh;
+}
+
+.modal-caption {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--soft-white);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.site-card {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: transform 0.4s ease;
+  height: 250px;
+}
+
+.site-card:hover {
+  transform: scale(1.05);
+}
+
+
+        /* Lightbox Modal Animations */
+        .lb-outerContainer {
+            animation: zoomIn 0.5s ease-out;
+        }
+        .lb-container > img {
+            animation: fadeIn 0.5s ease-in;
+        }
+        .lb-nav, .lb-close {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Core Values */
+        .values-container {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        .value-card {
+            min-width: 200px;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            transition: transform 0.3s ease;
+        }
+        .value-card:hover {
+            transform: scale(1.05);
+        }
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .value-title {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, var(--deep-red), var(--burnt-orange));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.4);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* new */
+         /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--soft-white);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-nav-links li {
+            margin: 1.5rem 0;
+        }
+        
+        .mobile-nav-links a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 1rem;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+         /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+            
+            .rc-number {
+                font-size: 0.7rem;
+            }
+            
+            .logo-image {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .mobile-nav-links a {
+                font-size: 1.3rem;
+            }
+            
+            .demo-content h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+        }
+
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            gap: 0.5rem;
+        }
+        .logo-image {
+            width: auto;
+            height: 110px;
+            max-width: 100%;
+        }
+        .rc-number {
+            color: var(--burnt-orange);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="./pict/logo2345-Photoroom.png" alt="Toro Royal Mining Limited Logo" class="logo-image">
+                <div class="rc-number">RC: 8453730</div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content glass-card fade-in">
+            <h1 class="hero-title">Who We Are</h1>
+            <p class="hero-tagline">Unearthing value from the depths, powered by integrity and excellence.</p>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="section" id="about">
+        <div class="overview glass-card fade-in">
+            <h2 class="section-title">Company Overview</h2>
+            <p>Toro Royal Mining Limited is a proudly African company with a mission to transform natural resources into sustainable wealth. With registration number RC: 8453730, we are committed to ethical mining, community development, and innovation-driven operations.</p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+        <h2 class="section-title fade-in">Our Mission & Vision</h2>
+        <div class="mission-vision">
+            <div class="mission-card glass-card slide-in-left">
+                <h3>Our Mission</h3>
+                <p>To extract, refine, and deliver minerals responsibly while creating long-term value for stakeholders and communities.</p>
+            </div>
+            <div class="vision-card glass-card slide-in-right">
+                <h3>Our Vision</h3>
+                <p>To be Africa's most respected mining brand, shaping a greener, wealthier future for generations to come.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Mining Sites -->
+<section class="section">
+    <h2 class="section-title fade-in">Our Mining Sites</h2>
+    <div class="mining-sites">
+      <div class="site-card glass-card fade-in" onclick="openModal('pict/min2.jpg', 'Site 1 - Gold Deposit Area')">
+        <div class="site-number">Click me</div>
+      </div>
+      <div class="site-card glass-card fade-in" onclick="openModal('pict/min1.jpg', 'Site 2 - Copper Extraction Zone')">
+        <div class="site-number">Click me</div>
+      </div>
+      <div class="site-card glass-card fade-in" onclick="openModal('pict/min3.jpg', 'Site 3 - Diamond Processing Site')">
+        <div class="site-number">Click me</div>
+      </div>
+      <div class="site-card glass-card fade-in" onclick="openModal('pict/min6.jpg', 'Site 4 - Rare Earth Minerals')">
+        <div class="site-number">Click me</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content glass-card">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="Mining Site Preview" />
+      <p id="modalCaption" class="modal-caption"></p>
+    </div>
+  </div>
+  
+
+    <!-- Core Values -->
+    <section class="section">
+        <h2 class="section-title fade-in">Our Core Values</h2>
+        <div class="values-container">
+            <div class="value-card fade-in">
+                <div class="value-icon">💎</div>
+                <div class="value-title">Integrity</div>
+                <p>Honest and transparent in all our dealings</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">⭐</div>
+                <div class="value-title">Excellence</div>
+                <p>Striving for the highest standards in everything</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">🌱</div>
+                <div class="value-title">Sustainability</div>
+                <p>Protecting our environment for future generations</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">🚀</div>
+                <div class="value-title">Innovation</div>
+                <p>Embracing technology and creative solutions</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">🤝</div>
+                <div class="value-title">Community</div>
+                <p>Building stronger communities together</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section cta">
+        <div class="glass-card fade-in">
+            <h2 class="cta-title">Join us in building Africa's mineral future</h2>
+            <a href="./contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script> 
+
+    <!-- JavaScript -->
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Navbar scroll effect
+        function handleNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Parallax effect
+        function handleParallax() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            createParticles();
+            handleScrollAnimations();
+
+            window.addEventListener('scroll', function () {
+                handleNavbarScroll();
+                handleScrollAnimations();
+                handleParallax();
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add stagger animation to mining sites
+            const siteCards = document.querySelectorAll('.site-card');
+            siteCards.forEach((card, index) => {
+                card.style.animationDelay = (index * 0.2) + 's';
+            });
+
+            // Add stagger animation to value cards
+            const valueCards = document.querySelectorAll('.value-card');
+            valueCards.forEach((card, index) => {
+                card.style.animationDelay = (index * 0.1) + 's';
+            });
+        });
+    </script>
+
+    <!-- minin site -->
+    <script>
+        function openModal(imageSrc, caption) {
+          document.getElementById("modalImage").src = imageSrc;
+          document.getElementById("modalCaption").textContent = caption;
+          document.getElementById("imageModal").style.display = "block";
+        }
+        
+        function closeModal() {
+          document.getElementById("imageModal").style.display = "none";
+        }
+        </script>
+
+        <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navbar = document.getElementById('navbar');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Handle escape key to close mobile menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+        
+</body>
+</html>
