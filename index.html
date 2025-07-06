@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Toro Royal Mining Limited - Mining the Future with Royal Precision</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css " rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css " rel="stylesheet"/>
     <style>
         :root {
             --burnt-orange: #CC5500;
@@ -17,6 +17,8 @@
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
             --dark-glass: rgba(0, 0, 0, 0.3);
+            --electric-blue: #00BFFF;
+            --green-accent: #32CD32;
         }
 
         * {
@@ -30,7 +32,8 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
             color: var(--white);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.2;
+            padding: 10px 10px 10px 10px;
         }
 
         /* Parallax Background Layers */
@@ -43,7 +46,6 @@
             pointer-events: none;
             z-index: -2;
         }
-
         .parallax-layer {
             position: absolute;
             top: 0;
@@ -54,17 +56,14 @@
             background-size: cover;
             background-position: center;
         }
-
         .layer-sky {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 30%, #4a2c2a 60%, #1a1a1a 100%);
             z-index: -10;
         }
-
         .layer-mountains {
             background: linear-gradient(to bottom, transparent 0%, rgba(139, 69, 19, 0.3) 40%, rgba(139, 69, 19, 0.6) 70%, rgba(139, 69, 19, 0.8) 100%);
             z-index: -9;
         }
-
         .layer-hills {
             background: linear-gradient(to bottom, transparent 0%, rgba(204, 85, 0, 0.2) 50%, rgba(204, 85, 0, 0.4) 80%, rgba(204, 85, 0, 0.6) 100%);
             z-index: -8;
@@ -80,17 +79,17 @@
             z-index: -1;
             overflow: hidden;
         }
-
         .mineral {
             position: absolute;
             opacity: 0.6;
             animation: float 20s infinite linear;
             pointer-events: none;
         }
-
         .mineral.gold { color: var(--deep-gold); animation-duration: 25s; }
         .mineral.orange { color: var(--burnt-orange); animation-duration: 30s; }
         .mineral.red { color: var(--rich-red); animation-duration: 22s; }
+        .mineral.blue { color: var(--electric-blue); animation-duration: 28s; }
+        .mineral.green { color: var(--green-accent); animation-duration: 32s; }
 
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); }
@@ -239,6 +238,8 @@
 
         /* Enhanced Hero Section */
         .hero {
+            margin-top: 100px;
+            margin-bottom: 50px;
             height: 120vh;
             display: flex;
             align-items: center;
@@ -255,7 +256,6 @@
             z-index: 2;
         }
 
-        /* Interactive Glass Hero Overlay */
         .hero-glass-overlay {
             position: absolute;
             top: 50%;
@@ -631,7 +631,6 @@
 
         /* RESPONSIVE DESIGN - MOBILE STYLES */
         @media (max-width: 768px) {
-            /* Mobile Navigation */
             .nav-menu {
                 display: none;
                 flex-direction: column;
@@ -765,7 +764,6 @@
             }
         }
 
-        /* Large Desktop Styles */
         @media (min-width: 1200px) {
             .nav-menu {
                 gap: 3rem;
@@ -782,428 +780,440 @@
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Parallax Background Layers -->
-    <div class="parallax-container">
-        <div class="parallax-layer layer-sky" id="layerSky"></div>
-        <div class="parallax-layer layer-mountains" id="layerMountains"></div>
-        <div class="parallax-layer layer-hills" id="layerHills"></div>
-    </div>
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Enhanced Animated Background -->
-    <div class="bg-animation" id="bgAnimation">
-        <i class="fas fa-gem mineral gold" style="top: 10%; left: 10%; font-size: 2rem;"></i>
-        <i class="fas fa-coins mineral orange" style="top: 20%; left: 80%; font-size: 1.5rem;"></i>
-        <i class="fas fa-mountain mineral red" style="top: 30%; left: 20%; font-size: 2.5rem;"></i>
-        <i class="fas fa-gem mineral gold" style="top: 40%; left: 70%; font-size: 1.8rem;"></i>
-        <i class="fas fa-coins mineral orange" style="top: 60%; left: 15%; font-size: 2rem;"></i>
-        <i class="fas fa-mountain mineral red" style="top: 70%; left: 85%; font-size: 1.6rem;"></i>
-        <i class="fas fa-gem mineral gold" style="top: 80%; left: 50%; font-size: 2.2rem;"></i>
-        <i class="fas fa-coins mineral orange" style="top: 90%; left: 30%; font-size: 1.7rem;"></i>
-    </div>
+<!-- Parallax Background Layers -->
+<div class="parallax-container">
+    <div class="parallax-layer layer-sky" id="layerSky"></div>
+    <div class="parallax-layer layer-mountains" id="layerMountains"></div>
+    <div class="parallax-layer layer-hills" id="layerHills"></div>
+</div>
 
-    <!-- Header -->
-    <header class="header glass" id="header">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="./pict/logo2345-Photoroom.png" alt="Toro Royal Mining Limited Logo" class="logo-image">
-                <div class="rc-number">RC: 8453730</div>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="./about.html" class="nav-link">About</a></li>
-                    <li><a href="./services.html" class="nav-link">Services</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+<!-- Enhanced Animated Background -->
+<div class="bg-animation" id="bgAnimation">
+    <i class="fas fa-car-battery mineral blue" style="top: 50%; left: 60%; font-size: 2rem;"></i>
+    <i class="fas fa-bolt mineral green" style="top: 25%; left: 40%; font-size: 1.5rem;"></i>
+    <i class="fas fa-flask mineral blue" style="top: 70%; left: 30%; font-size: 1.8rem;"></i>
+    <i class="fas fa-truck mineral orange" style="top: 90%; left: 80%; font-size: 2rem;"></i>
+</div>
+
+<!-- Header -->
+<header class="header glass" id="header">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="./pict/logo2345-Photoroom.png" alt="Toro Royal Mining Limited Logo" class="logo-image">
+            <div class="rc-number">RC: 8453730</div>
         </div>
-    </header>
-
-    <!-- Enhanced Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-glass-overlay">
-            <div class="hero-content">
-                <h1>Mining the Future with Royal Precision</h1>
-                <p class="hero-tagline">Leading the mining industry with sustainable practices, cutting-edge technology, and unwavering commitment to excellence.</p>
-                
-                <!-- Quick Metrics -->
-                <div class="hero-metrics">
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="100">
-                        <span class="metric-number">35+</span>
-                        <span class="metric-label">Years Experience</span>
-                    </div>
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="200">
-                        <span class="metric-number">12</span>
-                        <span class="metric-label">Mining Sites</span>
-                    </div>
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="300">
-                        <span class="metric-number">₦20B+</span>
-                        <span class="metric-label">Annual Revenue</span>
-                    </div>
-                </div>
-                
-                <a href="#about" class="cta-button" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-gem" style="margin-right: 0.5rem;"></i>
-                    Explore Our Legacy
-                </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="./about.html" class="nav-link">About</a></li>
+                <li><a href="./services.html" class="nav-link">Services</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-    </section>
-
-    <!-- Floating Contact CTA Button -->
-    <div class="floating-contact" id="floatingContact">
-        <i class="fas fa-phone"></i>
+        </nav>
     </div>
+</header>
 
-    <!-- Contact Modal -->
-    <div class="contact-modal" id="contactModal">
-        <div class="modal-content">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <h3 style="color: var(--deep-gold); margin-bottom: 1rem;">Get In Touch</h3>
-            <p style="margin-bottom: 1.5rem; opacity: 0.9;">Choose your preferred way to contact us</p>
-            <div class="contact-options">
-                <a href="tel:+2341234567890" class="contact-option">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <strong>Call Us</strong>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">(+234) 09045330668</div>
-                    </div>
-                </a>
-                <a href="mailto:info@tororoyalmining.com" class="contact-option">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <strong>Email Us</strong>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">tororoyalminingltd@gmail.com</div>
-                    </div>
-                </a>
-                <a href="#" class="contact-option" onclick="startLiveChat()">
-                    <i class="fas fa-comments"></i>
-                    <div>
-                        <strong>Live Chat</strong>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">Start instant conversation</div>
-                    </div>
-                </a>
+<!-- Enhanced Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-glass-overlay">
+        <div class="hero-content">
+            <h1>Mining the Future with Royal Precision - Powering Tomorrow's Clean Energy</h1>
+            <p class="hero-tagline">Leading the mining industry with sustainable practices, cutting-edge lithium processing, and global shipping solutions for the clean energy revolution.</p>
+            <!-- Quick Metrics -->
+            <div class="hero-metrics">
+                <div class="metric-item" data-aos="fade-up" data-aos-delay="100">
+                    <span class="metric-number">5000+ Tons</span>
+                    <span class="metric-label">Annual Lithium Processing</span>
+                </div>
+                <div class="metric-item" data-aos="fade-up" data-aos-delay="200">
+                    <span class="metric-number">15+</span>
+                    <span class="metric-label">Countries Served</span>
+                </div>
+                <div class="metric-item" data-aos="fade-up" data-aos-delay="300">
+                    <span class="metric-number">₦20M+</span>
+                    <span class="metric-label">Annual Revenue</span>
+                </div>
             </div>
+            <a href="#lithium-processing" class="cta-button" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-charging-station" style="margin-right: 0.5rem;"></i>
+                Explore Lithium Services
+            </a>
         </div>
     </div>
+</section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="sections-grid">
-            <!-- About Us -->
-            <section class="section glass" id="about" data-aos="fade-up" data-aos-duration="800">
-                <i class="fas fa-building section-icon"></i>
-                <h2>About Us</h2>
-                <p>With decades of experience in the mining industry, Toro Royal Mining Limited stands as a beacon of innovation and sustainability. We combine traditional mining expertise with modern technology to deliver exceptional results while preserving our environment for future generations.</p>
-            </section>
-
-            <!-- Mining Solutions -->
-            <section class="section glass" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <i class="fas fa-cogs section-icon"></i>
-                <h2>Mining Solutions</h2>
-                <p>Our comprehensive mining solutions encompass exploration, extraction, processing, and distribution. We utilize state-of-the-art equipment and proven methodologies to maximize efficiency while maintaining the highest safety standards across all operations.</p>
-            </section>
-
-            <!-- Sustainability -->
-            <section class="section glass" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                <i class="fas fa-leaf section-icon"></i>
-                <h2>Sustainability</h2>
-                <p>Environmental stewardship is at the core of our operations. We implement eco-friendly mining practices, invest in renewable energy solutions, and actively participate in land restoration projects to ensure a sustainable future for mining.</p>
-            </section>
-
-            <!-- Investor Relations -->
-            <section class="section glass" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                <i class="fas fa-chart-line section-icon"></i>
-                <h2>Investor Relations</h2>
-                <p>We maintain transparent communication with our stakeholders and investors. Our strong financial performance, strategic growth initiatives, and commitment to sustainable practices make us an attractive investment opportunity in the mining sector.</p>
-            </section>
+<!-- New Core Services Section -->
+<section class="section glass" id="services" data-aos="fade-up" data-aos-duration="800">
+    <h2 style="margin-bottom: 2rem;">Our Core Services</h2>
+    <div class="sections-grid">
+        <!-- Lithium Extraction & Processing -->
+        <div class="section glass" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-flask section-icon" style="color: var(--electric-blue);"></i>
+            <h2>Lithium Extraction & Processing</h2>
+            <p>Advanced extraction methods including spodumene conversion and brine processing for high-purity battery-grade lithium.</p>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <div class="company-info">
-                <h3>Toro Royal Mining Limited</h3>
-                <div class="rc-number">RC: 8453730</div>
-            </div>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>tororoyalminingltd@gmail.com</span>
+        <!-- Quality Control & Testing -->
+        <div class="section glass" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-vial section-icon" style="color: var(--green-accent);"></i>
+            <h2>Quality Control & Testing</h2>
+            <p>ISO-certified labs ensuring 99.5%+ purity and compliance with global battery-grade standards.</p>
+        </div>
+
+        <!-- Global Shipping & Logistics -->
+        <div class="section glass" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-shipping-fast section-icon" style="color: var(--deep-gold);"></i>
+            <h2>Global Shipping & Logistics</h2>
+            <p>International hazmat-compliant logistics, temperature-controlled transport, and delivery in 2-4 weeks.</p>
+        </div>
+
+        <!-- Traditional Mining Operations -->
+        <div class="section glass" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-mountain section-icon"></i>
+            <h2>Traditional Mining Operations</h2>
+            <p>Gold, precious metals, and mineral extraction using state-of-the-art equipment and sustainable methods.</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Us -->
+<section class="section glass" id="about" data-aos="fade-up" data-aos-duration="800">
+    <i class="fas fa-building section-icon"></i>
+    <h2>About Us</h2>
+    <p>With decades of experience in the mining industry, Toro Royal Mining Limited specializes in lithium processing for the global battery market. We combine traditional mining expertise with modern technology to deliver exceptional results while preserving our environment for future generations. Our strategic positioning in the clean energy supply chain is supported by state-of-the-art processing facilities and international shipping capabilities.</p>
+</section>
+
+<!-- Lithium Processing Capabilities -->
+<section class="section glass" id="lithium-processing" data-aos="fade-up" data-aos-duration="800">
+    <i class="fas fa-industry section-icon" style="color: var(--electric-blue);"></i>
+    <h2>Lithium Processing Capabilities</h2>
+    <ul style="list-style:none;">
+        <li><strong>Processing Volume:</strong> 5,000+ tons annually</li>
+        <li><strong>Purity Levels:</strong> Battery-grade lithium carbonate (99.5%+)</li>
+        <li><strong>Certifications:</strong> ISO 9001, Battery-grade certifications</li>
+        <li><strong>Processing Methods:</strong> Spodumene conversion, brine processing</li>
+    </ul>
+</section>
+
+<!-- Global Shipping Network -->
+<section class="section glass" id="shipping" data-aos="fade-up" data-aos-duration="800">
+    <i class="fas fa-truck section-icon" style="color: var(--deep-gold);"></i>
+    <h2>Global Shipping Network</h2>
+    <ul style="list-style:none;">
+        <li><strong>Shipping Partners:</strong> Major international freight companies</li>
+        <li><strong>Destinations:</strong> Asia-Pacific, Europe, North America</li>
+        <li><strong>Logistics:</strong> Temperature-controlled shipping, hazmat compliance</li>
+        <li><strong>Delivery Timeline:</strong> 2-4 weeks global delivery</li>
+    </ul>
+</section>
+
+<!-- Market Focus -->
+<section class="section glass" id="market-focus" data-aos="fade-up" data-aos-duration="800">
+    <i class="fas fa-charging-station section-icon" style="color: var(--green-accent);"></i>
+    <h2>Market Focus</h2>
+    <ul style="list-style: none;">
+        <li><strong>EV Manufacturers:</strong> Tesla, BYD, CATL partnership opportunities</li>
+        <li><strong>Battery Manufacturers:</strong> Direct supply to battery producers</li>
+        <li><strong>Energy Storage:</strong> Grid-scale energy storage projects</li>
+        <li><strong>Electronics:</strong> High-tech consumer electronics</li>
+    </ul>
+</section>
+
+<!-- Floating Contact CTA Button -->
+<div class="floating-contact" id="floatingContact">
+    <i class="fas fa-phone"></i>
+</div>
+
+<!-- Contact Modal -->
+<div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <h3 style="color: var(--deep-gold); margin-bottom: 1rem;">Get In Touch</h3>
+        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Choose your preferred way to contact us</p>
+        <div class="contact-options">
+            <a href="tel:+2341234567890" class="contact-option">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <strong>Call Us</strong>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">(+234) 09045330668</div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>(+234) 09045330668
+            </a>
+            <a href="mailto:lithiumsales@tororoyalmining.com" class="contact-option">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Lithium Sales</strong>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">lithiumsales@tororoyalmining.com</div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Kaduna, Nigeria</span>
+            </a>
+            <a href="mailto:logistics@tororoyalmining.com" class="contact-option">
+                <i class="fas fa-shipping-fast"></i>
+                <div>
+                    <strong>Shipping Inquiries</strong>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">logistics@tororoyalmining.com</div>
                 </div>
+            </a>
+            <a href="mailto:technical@tororoyalmining.com" class="contact-option">
+                <i class="fas fa-tools"></i>
+                <div>
+                    <strong>Technical Support</strong>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">technical@tororoyalmining.com</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+    <div class="footer-content">
+        <div class="company-info">
+            <h3>Toro Royal Mining Limited</h3>
+            <div class="rc-number">RC: 8453730</div>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>tororoyalminingltd@gmail.com</span>
             </div>
-            
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>lithiumsales@tororoyalmining.com</span>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Toro Royal Mining Limited. All rights reserved.</p>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>logistics@tororoyalmining.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>(+234) 09045330668</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Kaduna, Nigeria</span>
             </div>
         </div>
-    </footer>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Toro Royal Mining Limited. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-    <!-- AOS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
+<!-- AOS Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js "></script>
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+
+    // Scroll Progress Bar
+    function updateScrollProgress() {
+        const scrollTop = window.pageYOffset;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / documentHeight) * 100;
+        document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+    }
+
+    // Parallax Effect
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        const rate2 = scrolled * -0.3;
+        const rate3 = scrolled * -0.1;
+        document.getElementById('layerSky').style.transform = `translateY(${rate}px)`;
+        document.getElementById('layerMountains').style.transform = `translateY(${rate2}px)`;
+        document.getElementById('layerHills').style.transform = `translateY(${rate3}px)`;
+    }
+
+    // Header scroll effect
+    function updateHeader() {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    // Combined scroll handler for performance
+    function handleScroll() {
+        requestAnimationFrame(() => {
+            updateScrollProgress();
+            updateParallax();
+            updateHeader();
         });
+    }
 
-        // Scroll Progress Bar
-        function updateScrollProgress() {
-            const scrollTop = window.pageYOffset;
-            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / documentHeight) * 100;
-            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
-        }
+    window.addEventListener('scroll', handleScroll);
 
-        // Parallax Effect
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            const rate2 = scrolled * -0.3;
-            const rate3 = scrolled * -0.1;
-
-            document.getElementById('layerSky').style.transform = `translateY(${rate}px)`;
-            document.getElementById('layerMountains').style.transform = `translateY(${rate2}px)`;
-            document.getElementById('layerHills').style.transform = `translateY(${rate3}px)`;
-        }
-
-        // Header scroll effect
-        function updateHeader() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-
-        // Combined scroll handler for performance
-        function handleScroll() {
-            requestAnimationFrame(() => {
-                updateScrollProgress();
-                updateParallax();
-                updateHeader();
-            });
-        }
-
-        window.addEventListener('scroll', handleScroll);
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Floating Contact Button Modal
-        const floatingContact = document.getElementById('floatingContact');
-        const contactModal = document.getElementById('contactModal');
-        const modalClose = document.getElementById('modalClose');
-
-        floatingContact.addEventListener('click', () => {
-            contactModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        });
-
-        modalClose.addEventListener('click', () => {
-            contactModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Live Chat Function
-        function startLiveChat() {
-            // Simulate live chat initialization
-            alert('Live chat feature would be integrated with your preferred chat service (e.g., Intercom, Zendesk, Tawk.to)');
-            contactModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Enhanced floating minerals
-        function addFloatingMineral() {
-            const minerals = ['fas fa-gem', 'fas fa-coins', 'fas fa-mountain', 'fas fa-cog', 'fas fa-star'];
-            const colors = ['gold', 'orange', 'red'];
-            const bgAnimation = document.getElementById('bgAnimation');
-            
-            const mineral = document.createElement('i');
-            mineral.className = `${minerals[Math.floor(Math.random() * minerals.length)]} mineral ${colors[Math.floor(Math.random() * colors.length)]}`;
-            mineral.style.left = Math.random() * 100 + '%';
-            mineral.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
-            mineral.style.animationDelay = Math.random() * 5 + 's';
-            mineral.style.animationDuration = (20 + Math.random() * 15) + 's';
-            
-            bgAnimation.appendChild(mineral);
-            
-            // Remove mineral after animation completes
-            setTimeout(() => {
-                if (mineral.parentNode) {
-                    mineral.parentNode.removeChild(mineral);
-                }
-            }, 35000);
-        }
-
-        // Add new minerals every 2.5 seconds
-        setInterval(addFloatingMineral, 2500);
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        mobileMenu.addEventListener('click', () => {
-            const isVisible = navMenu.style.display === 'flex';
-            navMenu.style.display = isVisible ? 'none' : 'flex';
-            
-            // Animate mobile menu bars
-            const spans = mobileMenu.querySelectorAll('span');
-            if (!isVisible) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans.forEach(span => {
-                    span.style.transform = 'none';
-                    span.style.opacity = '1';
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
+    });
 
-        // Enhanced section hover effects
-        document.querySelectorAll('.section').forEach(section => {
-            section.addEventListener('mouseenter', () => {
-                section.style.background = 'rgba(255, 255, 255, 0.15)';
-            });
-            
-            section.addEventListener('mouseleave', () => {
-                section.style.background = 'var(--glass-bg)';
-            });
-        });
+    // Floating Contact Button Modal
+    const floatingContact = document.getElementById('floatingContact');
+    const contactModal = document.getElementById('contactModal');
+    const modalClose = document.getElementById('modalClose');
 
-        // Intersection Observer for enhanced animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    floatingContact.addEventListener('click', () => {
+        contactModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+    modalClose.addEventListener('click', () => {
+        contactModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
 
-        // Add enhanced loading animations
-        window.addEventListener('load', () => {
-            // Fade in hero content with stagger
-            const heroElements = document.querySelectorAll('.hero-content > *');
-            heroElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        });
-
-        // Add subtle cursor effects
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 50%;
-                    background: radial-gradient(circle, var(--deep-gold), transparent);
-                    pointer-events: none;
-                    z-index: 9999;
-                    opacity: 0.6;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            const cursorEl = document.querySelector('.cursor');
-            cursorEl.style.left = e.clientX - 10 + 'px';
-            cursorEl.style.top = e.clientY - 10 + 'px';
-        });
-
-        // Add performance monitoring
-        let ticking = false;
-        function optimizedScrollHandler() {
-            if (!ticking) {
-                requestAnimationFrame(handleScroll);
-                ticking = true;
-                setTimeout(() => { ticking = false; }, 16); // ~60fps
-            }
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-        
-        // Replace the existing scroll listener
-        window.removeEventListener('scroll', handleScroll);
-        window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+    });
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set initial states
-            updateScrollProgress();
-            updateHeader();
-            
-            // Add entrance animations to hero metrics
-            const metrics = document.querySelectorAll('.metric-item');
-            metrics.forEach((metric, index) => {
-                metric.style.opacity = '0';
-                metric.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    metric.style.transition = 'all 0.6s ease';
-                    metric.style.opacity = '1';
-                    metric.style.transform = 'translateY(0)';
-                }, 1000 + (index * 150));
+    // Live Chat Function
+    function startLiveChat() {
+        alert('Live chat feature would be integrated with your preferred chat service (e.g., Intercom, Zendesk, Tawk.to)');
+        contactModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Enhanced floating minerals
+    function addFloatingMineral() {
+        const minerals = ['fas fa-gem', 'fas fa-coins', 'fas fa-mountain', 'fas fa-cog', 'fas fa-star', 'fas fa-battery-three-quarters'];
+        const colors = ['gold', 'orange', 'red', 'blue', 'green'];
+        const bgAnimation = document.getElementById('bgAnimation');
+        const mineral = document.createElement('i');
+        mineral.className = `${minerals[Math.floor(Math.random() * minerals.length)]} mineral ${colors[Math.floor(Math.random() * colors.length)]}`;
+        mineral.style.left = Math.random() * 100 + '%';
+        mineral.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
+        mineral.style.animationDelay = Math.random() * 5 + 's';
+        mineral.style.animationDuration = (20 + Math.random() * 15) + 's';
+        bgAnimation.appendChild(mineral);
+        setTimeout(() => {
+            if (mineral.parentNode) {
+                mineral.parentNode.removeChild(mineral);
+            }
+        }, 35000);
+    }
+
+    setInterval(addFloatingMineral, 2500);
+
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        const isVisible = navMenu.style.display === 'flex';
+        navMenu.style.display = isVisible ? 'none' : 'flex';
+        const spans = mobileMenu.querySelectorAll('span');
+        if (!isVisible) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+            spans.forEach(span => {
+                span.style.transform = 'none';
+                span.style.opacity = '1';
             });
+        }
+    });
+
+    // Enhanced section hover effects
+    document.querySelectorAll('.section').forEach(section => {
+        section.addEventListener('mouseenter', () => {
+            section.style.background = 'rgba(255, 255, 255, 0.15)';
         });
-    </script>
+        section.addEventListener('mouseleave', () => {
+            section.style.background = 'var(--glass-bg)';
+        });
+    });
+
+    // Intersection Observer for enhanced animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Add enhanced loading animations
+    window.addEventListener('load', () => {
+        const heroElements = document.querySelectorAll('.hero-content > *');
+        heroElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+    });
+
+    // Performance monitoring
+    let ticking = false;
+
+    function optimizedScrollHandler() {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
+            setTimeout(() => { ticking = false; }, 16);
+        }
+    }
+
+    window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+        updateScrollProgress();
+        updateHeader();
+
+        const metrics = document.querySelectorAll('.metric-item');
+        metrics.forEach((metric, index) => {
+            metric.style.opacity = '0';
+            metric.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                metric.style.transition = 'all 0.6s ease';
+                metric.style.opacity = '1';
+                metric.style.transform = 'translateY(0)';
+            }, 1000 + (index * 150));
+        });
+    });
+</script>
 </body>
 </html>

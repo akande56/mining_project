@@ -60,6 +60,82 @@
             }
         }
 
+        /* WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button i {
+            color: white;
+            font-size: 24px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-left-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .whatsapp-widget:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Hero Section */
         .hero {
             height: 60vh;
@@ -251,6 +327,7 @@
             overflow: hidden;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-right: 1rem;
         }
 
         .submit-btn:hover {
@@ -259,6 +336,34 @@
         }
 
         .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* WhatsApp Form Button */
+        .whatsapp-form-btn {
+            background: #25D366;
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-form-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-form-btn:active {
             transform: scale(0.98);
         }
 
@@ -398,6 +503,16 @@
             .cta-section h2 {
                 font-size: 2rem;
             }
+
+            .whatsapp-form-btn {
+                margin-top: 1rem;
+                margin-right: 0;
+            }
+
+            .submit-btn {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
         }
 
         /* Custom Scrollbar */
@@ -422,6 +537,14 @@
 <body>
     <!-- Floating Particles -->
     <div class="particles"></div>
+
+    <!-- WhatsApp Widget -->
+    <div class="whatsapp-widget" onclick="openWhatsApp()">
+        <div class="whatsapp-button">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -490,8 +613,12 @@
                         <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">
+                    <!-- <button type="submit" class="submit-btn">
                         Send Message
+                    </button> -->
+                    
+                    <button type="button" class="whatsapp-form-btn" onclick="sendViaWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
                     </button>
                     
                     <div class="success-message" id="successMessage">
@@ -509,7 +636,7 @@
                         <h3><i class="fas fa-mountain"></i> Our Mining Operations</h3>
                         <p>Strategically located across Nigeria's richest mineral deposits</p>
                         <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-                            <i class="fas fa-map-pin"></i> Primary Operations:  Kaduna
+                            <i class="fas fa-map-pin"></i> Primary Operations: Kaduna
                         </p>
                     </div>
                 </div>
@@ -525,6 +652,9 @@
     </div>
 
     <script>
+        // WhatsApp phone number (replace with your actual WhatsApp number)
+        const whatsappNumber = '2349045330668'; // Format: country code + number without + or spaces
+
         // Create floating particles
         function createParticles() {
             const particlesContainer = document.querySelector('.particles');
@@ -540,6 +670,60 @@
             }
         }
 
+        // Open WhatsApp with default message
+        function openWhatsApp() {
+            const defaultMessage = "Hello! I'm interested in learning more about Toro Royal Mining Limited's services. Could you please provide me with more information?";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Extract form data and send via WhatsApp
+        function sendViaWhatsApp() {
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            
+            // Check if form is valid
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Extract form data
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+
+            // Create formatted message
+            const whatsappMessage = `
+🏗️ *New Contact from Toro Royal Mining Website*
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📝 *Subject:* ${subject}
+
+💬 *Message:*
+${message}
+
+---
+*Sent via Toro Royal Mining Contact Form*
+            `.trim();
+
+            // Open WhatsApp with the formatted message
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Redirecting to WhatsApp...';
+            successMessage.style.display = 'block';
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
         // Form submission handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -553,6 +737,7 @@
             
             setTimeout(() => {
                 submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.';
                 successMessage.style.display = 'block';
                 
                 // Reset form after 3 seconds
