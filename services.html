@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Toro Royal Mining Limited</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burnt-orange: #CC5500;
+            --deep-gold: #FFD700;
+            --rich-red: #8B0000;
+            --dark-earth: #2F1B14;
+            --glassy-white: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 215, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a0f0a 0%, #2F1B14 35%, #1a0f0a 100%);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, var(--deep-gold) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sticky Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(47, 27, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(47, 27, 20, 0.95);
+            padding: 0.5rem 2rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            gap: 0.5rem;
+        }
+        .logo-image {
+            width: auto;
+            height: 110px;
+            max-width: 100%;
+        }
+        .rc-number {
+            color: var(--burnt-orange);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--deep-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(47, 27, 20, 0.6), rgba(26, 15, 10, 0.7)), 
+                        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.1"/></svg>') repeat;
+            animation: dustMove 20s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes dustMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50px) translateY(-50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--deep-gold) 0%, var(--burnt-orange) 50%, var(--rich-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6)); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* Glass morphism utility class */
+        .glass {
+            background: var(--glassy-white);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: linear-gradient(135deg, rgba(47, 27, 20, 0.6) 0%, rgba(204, 85, 0, 0.4) 100%); */
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-image::before {
+            background: linear-gradient(135deg, rgba(47, 27, 20, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* backdrop-filter: blur(1px); */
+            transition: backdrop-filter 0.4s ease;
+        }
+
+        .service-card:hover .service-image::after {
+            backdrop-filter: blur(0px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+            border-color: var(--deep-gold);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--burnt-orange), var(--deep-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(204, 85, 0, 0.3);
+            transition: all 0.4s ease;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(360deg);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--deep-gold);
+            text-align: left;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.9);
+            text-align: left;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* How We Work Section */
+        .workflow-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(204, 85, 0, 0.1) 100%);
+            position: relative;
+        }
+
+        .workflow-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--burnt-orange), var(--deep-gold), var(--burnt-orange));
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* Workflow Timeline Images */
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .workflow-step.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 3px solid var(--deep-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .step-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(204, 85, 0, 0.4) 0%, rgba(139, 0, 0, 0.4) 100%);
+        }
+
+        .step-number {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--rich-red), var(--burnt-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 2px solid var(--deep-gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .workflow-step h4 {
+            color: var(--deep-gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .workflow-step p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(rgba(47, 27, 20, 0.8), rgba(26, 15, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(204, 85, 0, 0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-gold);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--burnt-orange), var(--deep-gold));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(204, 85, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Image hover zoom effect */
+        .service-image {
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        /* Modal styles for image preview */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .modal-close:hover {
+            color: var(--deep-gold);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: rgba(47, 27, 20, 0.98);
+                flex-direction: column;
+                width: 200px;
+                gap: 0;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                border-radius: 0 0 10px 10px;
+                z-index: 1001;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: right;
+                border-bottom: 1px solid var(--glass-border);
+                padding: 1rem 1.5rem;
+            }
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+                z-index: 1100;
+            }
+            .hamburger span {
+                height: 4px;
+                width: 100%;
+                background: var(--deep-gold);
+                margin: 4px 0;
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
+        }
+        .hamburger {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+        }
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="./pict/logo2345-Photoroom.png" alt="Toro Royal Mining Limited Logo" class="logo-image">
+                <div class="rc-number">RC: 8453730</div>
+            </div>
+            <div class="hamburger" id="hamburger" aria-label="Open navigation" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="#services">Services</a></li>
+                
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Delivering mineral wealth with precision and pride</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Premium Mining Solutions</h2>
+                <p>Discover our comprehensive range of mining services, engineered for excellence and sustainable resource extraction.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('pict/diamond_extraction.jpg');" onclick="openModal(this)"></div>
+                    <div class="service-icon">🔍</div>
+                    <h3>Exploration & Surveying</h3>
+                    <p>Advanced geological mapping and mineral identification using cutting-edge technology and expert analysis to locate valuable deposits with precision and efficiency.</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('pict/diamond_extraction2.jpg');" onclick="openModal(this)"></div>
+                    <div class="service-icon">⛏️</div>
+                    <h3>Mineral Extraction</h3>
+                    <p>Precision extraction techniques that maximize yield while maintaining the highest safety and environmental standards throughout the mining process.</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');" onclick="openModal(this)"></div>
+                    <div class="service-icon">🏗️</div>
+                    <h3>Site Development</h3>
+                    <p>Complete infrastructure development including access roads, processing facilities, and support structures for optimal mining operations and workflow.</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('pict/copper_extraction2.jpg');" onclick="openModal(this)"></div>
+                    <div class="service-icon">⚙️</div>
+                    <h3>Processing & Refining</h3>
+                    <p>State-of-the-art mineral processing and refining capabilities that ensure maximum purity and value from extracted materials using advanced technology.</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('pict/min5.jpg');" onclick="openModal(this)"></div>
+                    <div class="service-icon">🌱</div>
+                    <h3>Environmental Consulting</h3>
+                    <p>Comprehensive environmental impact assessment and sustainable mining practices that protect ecosystems and communities while ensuring regulatory compliance.</p>
+                </div>
+                
+                <div class="service-card glass">
+                    <div class="service-image" style="background-image: url('pict/site_explo.jpg');" onclick="openModal(this)"></div>
+                    <div class="service-icon">🚛</div>
+                    <h3>Logistics & Delivery</h3>
+                    <p>Reliable transportation and supply chain management ensuring timely delivery of materials to global markets and partners with complete traceability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="workflow-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>How We Work</h2>
+                <p>Our proven methodology ensures successful project delivery from initial discovery to sustainable operations.</p>
+            </div>
+            
+            <div class="workflow-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="workflow-step">
+                    <div class="step-image" style="background-image: url('https://images.unsplash.com/photo-1581092786450-7b9a4b4f9e5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="step-number">1</div>
+                    <h4>Discovery</h4>
+                    <p>Comprehensive site analysis and resource evaluation using advanced geological techniques and cutting-edge survey equipment.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-image" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="step-number">2</div>
+                    <h4>Development</h4>
+                    <p>Strategic planning and infrastructure development with environmental consideration and community engagement at every step.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="step-number">3</div>
+                    <h4>Extraction</h4>
+                    <p>Precision mining operations utilizing cutting-edge equipment, advanced safety protocols, and efficient extraction methods.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-image" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="step-number">4</div>
+                    <h4>Sustainability</h4>
+                    <p>Long-term environmental restoration and community development programs for lasting positive impact and legacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Partner with Toro Royal Mining</h2>
+            <p>For dependable resource delivery and sustainable mining solutions that drive your business forward while respecting our planet's precious resources.</p>
+            <a href="#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Service Image">
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Observe fade-in elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+            
+            // Observe service cards with staggered animation
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.transitionDelay = (index * 0.1) + 's';
+                observer.observe(card);
+            });
+            
+            // Observe workflow steps with staggered animation
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+            workflowSteps.forEach((step, index) => {
+                step.style.transitionDelay = (index * 0.2) + 's';
+                observer.observe(step);
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Image modal functionality
+        function openModal(imageElement) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const backgroundImage = imageElement.style.backgroundImage;
+            const imageUrl = backgroundImage.slice(5, -2); // Remove 'url("' and '")'
+            
+            modal.style.display = 'block';
+            modalImg.src = imageUrl;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Service card 3D tilt effect
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Hamburger menu toggle for mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+        // Optional: close menu when a link is clicked (mobile UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
